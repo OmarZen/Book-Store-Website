@@ -37,6 +37,10 @@ bookstore-app
 │  │           ├─ frontend
 │  │           └─ main
 │  ├─ objects
+│  │  ├─ 00
+│  │  │  └─ 6232b169da41dc398f40eb4b916b44ad56c0ac
+│  │  ├─ 05
+│  │  │  └─ 86182d1388ca8dc3c16835eca405123d4e8d05
 │  │  ├─ 08
 │  │  │  ├─ 0d6c77ac21bb2ef88a6992b2b73ad93daaca92
 │  │  │  └─ cbb87faf90b0b41a982075011b1ddfd635ed4d
@@ -44,14 +48,22 @@ bookstore-app
 │  │  │  └─ f7a6188cc6d8290c07a3544e160e3b915b3489
 │  │  ├─ 0f
 │  │  │  └─ 8f026bbb8dbfcdc2eaff1134de07c522bc63c4
+│  │  ├─ 1c
+│  │  │  └─ e925f1811f554417be55606f48b242d9f6639d
+│  │  ├─ 1e
+│  │  │  └─ 7349247309872a3a630e8a9c45d605856ae939
 │  │  ├─ 1f
 │  │  │  └─ 03afeece5ac28064fa3c73a29215037465f789
 │  │  ├─ 21
 │  │  │  └─ d0a2582f8cd04bfc0ee4ca793853575bce7267
+│  │  ├─ 2e
+│  │  │  └─ 5df9b892a6e975fbdc7a78cbc58ca01170b9ed
 │  │  ├─ 36
 │  │  │  └─ 126f4b469a10563ea2f0439047e58129ebef2e
 │  │  ├─ 37
 │  │  │  └─ 845757234ccb68531c10cf7a2ffc589c47e342
+│  │  ├─ 38
+│  │  │  └─ b5ccc47c2c2f05912626e5018642c49e74422d
 │  │  ├─ 3c
 │  │  │  └─ 3629e647f5ddf82548912e337bea9826b434af
 │  │  ├─ 3d
@@ -63,6 +75,7 @@ bookstore-app
 │  │  ├─ 4d
 │  │  │  └─ 29575de80483b005c29bfcac5061cd2f45313e
 │  │  ├─ 52
+│  │  │  ├─ 0bd26b0e87195535ab3c94c4fcc8bdd9c0daa8
 │  │  │  └─ 53d3ad9e6be6690549cb255f5952337b02401d
 │  │  ├─ 55
 │  │  │  └─ 45d51ad115d204bc8d629450bbd27551cd6baa
@@ -111,15 +124,27 @@ bookstore-app
 │  │  │  └─ 069f27cbd9d53394428171c3989fd03db73c76
 │  │  ├─ b5
 │  │  │  └─ c0ed1c5d1fb7ec7de158ba6b3379691d2fe959
+│  │  ├─ b6
+│  │  │  └─ 3e06f020780d420409090b4c4bd1ca5cb5cda4
+│  │  ├─ b7
+│  │  │  └─ 2d230ec4fcfd578e8fbffb735c8333d325477c
+│  │  ├─ bb
+│  │  │  └─ acd6d5ba5def967b742f1bdcd0d9d66dfb000e
 │  │  ├─ bc
 │  │  │  └─ be122faa5685ca1d8f91d91c92ce1ed27558d1
+│  │  ├─ c6
+│  │  │  └─ 63ecc7cd987b0738c84b0628522072b4e9d899
 │  │  ├─ ce
 │  │  │  └─ 55bf4bdc64d50e6a11d7eb6ea15758e184c5dd
 │  │  ├─ d4
 │  │  │  └─ 6fcb6889586549cb6a9308445633fe4e489d05
 │  │  ├─ d5
-│  │  │  └─ 63c0fb10ba0e42724b21286eb546ee4e5734fc
+│  │  │  ├─ 63c0fb10ba0e42724b21286eb546ee4e5734fc
+│  │  │  └─ 97ca5b6ecab4822f09303ccb1a59bc8a2d72bb
+│  │  ├─ d6
+│  │  │  └─ 84178e883a666b905cbc297cc7c3eb05d0c6b0
 │  │  ├─ e2
+│  │  │  ├─ 889361620642bbd9e3124e262d1bbf12f57d61
 │  │  │  └─ 9582f8f96f642a3be0b05d0f65b7069508d03a
 │  │  ├─ e6
 │  │  │  └─ 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
@@ -132,11 +157,14 @@ bookstore-app
 │  │  ├─ f6
 │  │  │  └─ 210fb4022ed2083c98221840f588744110410c
 │  │  ├─ f7
-│  │  │  └─ 1d1fcf22e99213636899f575a10d4d1b2d0e5c
+│  │  │  ├─ 1d1fcf22e99213636899f575a10d4d1b2d0e5c
+│  │  │  └─ 22b306fcd9953d6ce067e5efc253f094093d51
 │  │  ├─ fb
 │  │  │  └─ 1e8431ad4c01412f4a4861c85708ce40e991cd
 │  │  ├─ fc
 │  │  │  └─ 44b0a3796c0e0a64c3d858ca038bd4570465d9
+│  │  ├─ ff
+│  │  │  └─ 8d7576cc5017a6768a2234bd272718d4d5db7e
 │  │  ├─ info
 │  │  └─ pack
 │  └─ refs
@@ -170,9 +198,24 @@ bookstore-app
 │     ├─ App.css
 │     ├─ App.js
 │     ├─ App.test.js
+│     ├─ assets
+│     │  └─ images
+│     │     └─ logo.png
+│     ├─ components
+│     │  ├─ BookCard.jsx
+│     │  ├─ BookList.jsx
+│     │  ├─ Header.jsx
+│     │  ├─ Profile.jsx
+│     │  ├─ Sidebar.css
+│     │  └─ Sidebar.jsx
 │     ├─ index.css
 │     ├─ index.js
 │     ├─ logo.svg
+│     ├─ pages
+│     │  ├─ Authors.jsx
+│     │  ├─ Books.jsx
+│     │  ├─ Shop.jsx
+│     │  └─ Stores.jsx
 │     ├─ reportWebVitals.js
 │     └─ setupTests.js
 ├─ index.js

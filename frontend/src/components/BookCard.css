@@ -1,0 +1,42 @@
+/* src/components/BookCard.css */
+.book-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stores {
+    margin-top: 10px;
+  }
+  
+  .store-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+  }
+  
+  .store-name {
+    font-weight: bold;
+  }
+  
+  .store-price {
+    color: #BF5523; /* Orange color for price */
+  }
+  
+  .sell-button {
+    background-color: #3E435D; /* Dark color for button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .sell-button:hover {
+    background-color: #BF5523; /* Change on hover */
+  }
+  

@@ -1,0 +1,58 @@
+/* src/components/Header.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header-title {
+    color: #3E435D; /* Title color */
+    font-size: 24px; /* Title size */
+    font-family: "Poppins", sans-serif; /* Title font */
+    font-weight: bold; /* Bold font for the title */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .breadcrumb {
+    color: #3E435D; /* Breadcrumb color */
+    font-family: "Poppins", sans-serif; /* Breadcrumb font */
+    font-size: 16px; /* Breadcrumb size */
+    margin-top: 5px; /* Space between title and breadcrumb */
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-picture {
+    width: 40px; /* Size of the profile picture */
+    height: 40px; /* Make it square */
+    border-radius: 5px; /* Rounded corners */
+    margin-right: 10px; /* Space between image and name */
+  }
+  
+  .user-name {
+    color: #3E435D; /* User name color */
+    font-size: 24px; /* User name size */
+    font-family: "Poppins", sans-serif; /* User name font */
+  }
+  
+  .divider {
+    border: none; /* Remove default border */
+    height: 1px; /* Set height of the divider */
+    background-color: #B0B0B0; /* Divider color */
+    
+  }
+  

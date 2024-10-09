@@ -1,15 +1,13 @@
 // models/StoreBook.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const Store = require('./Store');
-const Book = require('./Book');
 
 class StoreBook extends Model {}
 StoreBook.init({
   store_id: {
     type: DataTypes.INTEGER,
     references: {
-      model: Store,
+      model: 'stores', // Should match the model name
       key: 'id',
     },
     onDelete: 'CASCADE',
@@ -17,7 +15,7 @@ StoreBook.init({
   book_id: {
     type: DataTypes.INTEGER,
     references: {
-      model: Book,
+      model: 'books', // Should match the model name
       key: 'id',
     },
     onDelete: 'CASCADE',
@@ -27,6 +25,6 @@ StoreBook.init({
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
-}, { sequelize, modelName: 'store_book', timestamps: false });  // Disable timestamps
+}, { sequelize, modelName: 'store_book', timestamps: false });
 
 module.exports = StoreBook;

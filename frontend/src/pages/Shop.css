@@ -1,0 +1,100 @@
+/* src/pages/Shop.css */
+
+.shop-page {
+    padding: 25px;
+    margin-left: 250px;
+    /* Adjust for the sidebar */
+    background-color: #F1F1F1;
+}
+
+.browse-title {
+    font-size: 24px;
+    /* Size of the title */
+    color: #000;
+    /* Black color */
+    margin-bottom: 15px;
+    /* Space below the title */
+}
+
+.search-filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filters {
+    display: flex;
+    gap: 20px;
+    /* Space between filter dropdowns */
+    align-items: center;
+}
+
+.filter-title {
+    font-size: 16px;
+    /* Size of the filter title */
+    margin-right: 10px;
+    /* Space to the right */
+    color: #3E435D;
+    /* Black color */
+    font-weight: 500;
+}
+
+.filters select {
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    color: #3E435D;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    border-color: transparent;
+    /* make the select has a fixed size not according to its content */
+    width: 83px;
+}
+
+.filters select option {
+    font-size: 0.75em;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.search-bar {
+    width: 336px;
+    border-color: transparent;
+    font-size: 1.1em;
+}
+
+.search-icon {
+    color: #ADA7A7;
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .search-filter-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .filters {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filters select {
+        width: 100%;
+    }
+}

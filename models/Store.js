@@ -1,6 +1,7 @@
 // models/Store.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const StoreBook = require('./StoreBook'); // Import StoreBook here
 
 class Store extends Model {}
 Store.init({
@@ -11,6 +12,10 @@ Store.init({
   },
   name: DataTypes.STRING,
   address: DataTypes.STRING,
-}, { sequelize, modelName: 'store', timestamps: false });  // Disable timestamps
+}, { sequelize, modelName: 'store', timestamps: false });
+
+// Define associations after the model definition
+const Book = require('./Book'); // Import Book here
+Store.belongsToMany(Book, { through: StoreBook, foreignKey: 'store_id' });
 
 module.exports = Store;

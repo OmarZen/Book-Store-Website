@@ -20,8 +20,9 @@ Book.init({
     },
     onDelete: 'CASCADE',
   },
-}, { sequelize, modelName: 'book', timestamps: false });  // Disable timestamps
+}, { sequelize, modelName: 'book', timestamps: false });
 
+// Define associations after the model definition
 Book.belongsTo(Author, { foreignKey: 'author_id' });
 
 module.exports = Book;

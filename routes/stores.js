@@ -2,6 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const Store = require('../models/Store');
+const Book = require('../models/Book');
+const StoreBook = require('../models/StoreBook');
+const Author = require('../models/Author'); // Import Author model
 
 // Get all stores
 router.get('/', async (req, res) => {
@@ -67,5 +70,48 @@ router.delete('/:id', async (req, res) => {
         res.status(400).json({ error: 'Failed to delete store.' });
     }
 });
+
+// Get all stores with their books and authors
+router.get('/all', async (req, res) => {
+    try {
+      const stores = await Store.findAll({
+        include: [
+          {
+            model: Book,
+            through: {
+              model: StoreBook,
+              attributes: ['price'], // Get price from StoreBook
+            },
+            include: {
+              model: Author,
+              attributes: ['name'], // Get the author's name
+            },
+          },
+        ],
+      });
+  
+      // Check if stores are found
+      if (!stores || stores.length === 0) {
+        return res.status(404).json({ message: 'No stores found.' });
+      }
+  
+      // Construct response data
+      const responseData = stores.map(store => ({
+        storeName: store.name,
+        books: store.books.map(book => ({
+          id: book.id, // Book ID
+          title: book.name, // Book Title
+          author: book.author.name, // Author Name
+          price: book.store_book.price, // Price
+        })),
+      }));
+  
+      res.json(responseData);
+      console.log('Stores with books fetched successfully.');
+    } catch (error) {
+      console.error('Error fetching stores with books:', error);
+      res.status(500).json({ error: 'Failed to fetch stores with books.' });
+    }
+  });
 
 module.exports = router;
