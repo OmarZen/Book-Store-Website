@@ -13,7 +13,6 @@ function App() {
         <Sidebar />
         <div className="main-content">
           <Routes>
-            {/* Use element prop instead of component */}
             <Route path="/shop" element={<Shop />} />
             <Route path="/stores" element={<Stores />} />
             <Route path="/authors" element={<Authors />} />
