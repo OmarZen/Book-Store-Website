@@ -1,0 +1,143 @@
+.stores-page {
+    padding: 25px;
+    margin-left: 15%;
+    /* Adjust for the sidebar */
+    background-color: #F1F1F1;
+}
+
+.store-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: 'poppins', sans-serif;
+    justify-items: center;
+    align-items: center;
+    
+}
+
+.store-title {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'poppins', sans-serif;
+    gap: 10px;
+}
+
+.store-title span {
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'poppins', sans-serif;
+}
+
+.search-bar-container {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'poppins', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ 
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-button, .delete-button {
+    width: 48px;
+    height: 48px;
+    background-color: #BF5523; /* The color for the square buttons */
+    color: white; /* White icon color */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Slight rounding for better design */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #A8491F; /* Slightly darker on hover for effect */
+}
+
+/* Optional: Add some transition effects */
+.edit-button, .delete-button {
+    transition: background-color 0.3s ease;
+}
+
+.add-store-button {
+    background-color: #BF5523;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-store-button:hover {
+    background-color: #A8491F;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #BF5523;
+    border-radius: 15px;
+    width: 500px;
+  }
+  .modal-content h3{
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .divider-form{
+    margin: 15px;
+  }
+  .modal-content form{
+    background-color: white;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  

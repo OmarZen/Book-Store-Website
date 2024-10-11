@@ -7,6 +7,8 @@ import { CiSearch } from "react-icons/ci";
 
 const Shop = () => {
   const [books, setBooks] = useState([]);
+  const [authors, setAuthors] = useState([]);
+  const [stores, setStores] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
     author: "",
@@ -18,32 +20,53 @@ const Shop = () => {
     // Fetch books data from the API
     const fetchBooks = async () => {
       try {
-        const response = await fetch('/api/stores/all');
+        const response = await fetch("/api/stores/all");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const data = await response.json();
+  
+        const allAuthors = new Set();
+        const allStores = new Set();
+        const bookMap = {};
+  
         // Flatten the data structure to extract book information
-        const allBooks = data.flatMap(store =>
-          store.books.map(book => ({
-            id: book.id,
-            title: book.title,
-            author: book.author,
-            stores: store.books.map(s => ({ name: store.storeName, price: s.price })) // Adjust according to your actual data structure
-          }))
-        );
-        
-        setBooks(allBooks);
-        console.log("Books fetched successfully.");
-        console.log(allBooks);
+        data.forEach((store) => {
+          allStores.add(store.storeName);
+  
+          store.books.forEach((book) => {
+            allAuthors.add(book.author);
+            
+            if (bookMap[book.title]) {
+              // If the book already exists, add the new store to the stores array
+              bookMap[book.title].stores.push({ 
+                name: store.storeName, 
+                price: book.price 
+              });
+            } else {
+              // Otherwise, create a new entry for the book
+              bookMap[book.title] = {
+                id: book.id,
+                title: book.title,
+                author: book.author,
+                stores: [{ name: store.storeName, price: book.price }],
+              };
+            }
+          });
+        });
+  
+        setBooks(Object.values(bookMap));
+        setAuthors([...allAuthors]);
+        setStores([...allStores]);
+        console.log("Books, authors, and stores fetched successfully.");
       } catch (error) {
         console.log("Failed to fetch books.");
         console.error("Error fetching books:", error);
       }
     };
-
+  
     fetchBooks();
-  }, []);
+  }, []);  
 
   const handleSearch = (e) => setSearchTerm(e.target.value);
 
@@ -52,13 +75,29 @@ const Shop = () => {
     setFilters({ ...filters, [name]: value });
   };
 
-  const filteredBooks = books.filter((book) => {
-    return (
-      book.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (filters.author === "" || book.author === filters.author) &&
-      (filters.store === "" || book.storeName === filters.store) // Adjusted for the store filter
-    );
-  });
+  const sortBooks = (a, b) => {
+    if (filters.sortBy === "priceLowToHigh") {
+      return a.stores[0].price - b.stores[0].price;
+    } else if (filters.sortBy === "priceHighToLow") {
+      return b.stores[0].price - a.stores[0].price;
+    } else if (filters.sortBy === "alphaAZ") {
+      return a.title.localeCompare(b.title);
+    } else if (filters.sortBy === "alphaZA") {
+      return b.title.localeCompare(a.title);
+    }
+    return 0; // Return 0 if no sorting is applied
+  };
+
+  const filteredBooks = books
+    .filter((book) => {
+      return (
+        book.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (filters.author === "" || book.author === filters.author) &&
+        (filters.store === "" ||
+          book.stores.some((store) => store.name === filters.store))
+      );
+    })
+    .sort(sortBooks); // Apply the sorting here
 
   // Define a sample user object
   const user = {
@@ -75,24 +114,44 @@ const Shop = () => {
           <h2 className="browse-title">Browse Books</h2>
           <div className="filters">
             <span className="filter-title">Author:</span>
-            <select name="author" onChange={handleFilterChange} value={filters.author}>
+            <select
+              name="author"
+              onChange={handleFilterChange}
+              value={filters.author}
+            >
               <option value="">All</option>
-              <option value="Brooklyn Simmons">Brooklyn Simmons</option>
-              <option value="Cody Hudson">Cody Hudson</option>
-              <option value="Marley Ball">Marley Ball</option>
-              <option value="Oskar Williams">Oskar Williams</option>
+              {authors.map((author, index) => (
+                <option key={index} value={author}>
+                  {author}
+                </option>
+              ))}
             </select>
+
             <span className="filter-title">Store:</span>
-            <select name="store" onChange={handleFilterChange} value={filters.store}>
+            <select
+              name="store"
+              onChange={handleFilterChange}
+              value={filters.store}
+            >
               <option value="">All</option>
-              {/* Include the store names dynamically if you have them */}
-              <option value="Uptown Books">Uptown Books</option>
-              <option value="Village Books">Village Books</option>
-              {/* Add more store options as needed */}
+              {stores.map((store, index) => (
+                <option key={index} value={store}>
+                  {store}
+                </option>
+              ))}
             </select>
+
             <span className="filter-title">Sort By:</span>
-            <select name="sortBy" onChange={handleFilterChange} value={filters.sortBy}>
-              <option value="price">Least Price</option>
+            <select
+              name="sortBy"
+              onChange={handleFilterChange}
+              value={filters.sortBy}
+            >
+              <option value="">None</option>
+              <option value="priceLowToHigh">Price (Low to High)</option>
+              <option value="priceHighToLow">Price (High to Low)</option>
+              <option value="alphaAZ">Alphabetical (A-Z)</option>
+              <option value="alphaZA">Alphabetical (Z-A)</option>
             </select>
           </div>
         </div>
