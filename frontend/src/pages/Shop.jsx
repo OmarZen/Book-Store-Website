@@ -25,26 +25,37 @@ const Shop = () => {
           throw new Error("Failed to fetch data");
         }
         const data = await response.json();
-
+  
         const allAuthors = new Set();
         const allStores = new Set();
-
+        const bookMap = {};
+  
         // Flatten the data structure to extract book information
-        const allBooks = data.flatMap((store) => {
+        data.forEach((store) => {
           allStores.add(store.storeName);
-
-          return store.books.map((book) => {
+  
+          store.books.forEach((book) => {
             allAuthors.add(book.author);
-            return {
-              id: book.id,
-              title: book.title,
-              author: book.author,
-              stores: [{ name: store.storeName, price: book.price }],
-            };
+            
+            if (bookMap[book.title]) {
+              // If the book already exists, add the new store to the stores array
+              bookMap[book.title].stores.push({ 
+                name: store.storeName, 
+                price: book.price 
+              });
+            } else {
+              // Otherwise, create a new entry for the book
+              bookMap[book.title] = {
+                id: book.id,
+                title: book.title,
+                author: book.author,
+                stores: [{ name: store.storeName, price: book.price }],
+              };
+            }
           });
         });
-
-        setBooks(allBooks);
+  
+        setBooks(Object.values(bookMap));
         setAuthors([...allAuthors]);
         setStores([...allStores]);
         console.log("Books, authors, and stores fetched successfully.");
@@ -53,9 +64,9 @@ const Shop = () => {
         console.error("Error fetching books:", error);
       }
     };
-
+  
     fetchBooks();
-  }, []);
+  }, []);  
 
   const handleSearch = (e) => setSearchTerm(e.target.value);
 
